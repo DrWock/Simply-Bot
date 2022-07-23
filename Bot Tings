@@ -1,0 +1,37 @@
+//simply bot
+
+const express = require("express")
+const app = express() 
+
+app.get("/", (req, res) => {
+  res.send("Simply <3")
+})
+
+app.listen(3000,() => {
+  console.log("Im Online Nigga!")
+})
+
+let Discord = require("discord.js")
+let client = new Discord.Client()
+
+client.on("ready", () => {
+  client.user.setPresence({ activity: { name: "HENTAI SIMULATOR" }, status: "dnd" })
+  
+})
+
+
+client.on("message", message => {
+if(message.content === "!roster") {
+  const embed = new Discord.MessageEmbed()
+  .setThumbnail(client.user.displayAvatarURL())
+  .setTitle("Simply Roster")
+  .setDescription(" Founders: Sideways, Natsirt, Saxzu \n \nLEADERS: \nSideways\nSaxzu \nTEAM \nTellz \nGloith \nToast \nNatsirt \nsaxzu \nTiwaz \nAimless \nKru$h \nSpooky \nZertex \nYakuji \n\nAnyone that is not on this roster, is not affiliated with Simply")
+  .setColor("LUMINOUS_VIVID_PINK")
+  .setTimestamp()
+  .setFooter("Simply");
+  message.channel.send(embed);
+}
+  if(message.content === "!ping") {
+    message.channel.send("pong")
+  }
+});
